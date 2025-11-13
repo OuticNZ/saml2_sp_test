@@ -1,0 +1,21 @@
+{
+  "strict": true,
+  "debug": true,
+  "sp": {
+    "entityId": "http://localhost:5000/metadata/",
+    "assertionConsumerService": {
+      "url": "http://localhost:5000/acs/",
+      "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+    },
+    "x509cert": "",
+    "privateKey": ""
+  },
+  "idp": {
+    "entityId": "https://login.microsoftonline.com/{tenant-id}/saml2",
+    "singleSignOnService": {
+      "url": "https://login.microsoftonline.com/{tenant-id}/saml2",
+      "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+    },
+    "x509cert": "{Entra ID Signing Certificate}"
+  }
+}
