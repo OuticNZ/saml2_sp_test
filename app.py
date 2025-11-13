@@ -29,7 +29,9 @@ def index():
         <body style="font-family: Arial; text-align: center; margin-top: 50px;">
             <h1>Welcome to the SAML Test App</h1>
             <p>Click below to authenticate via Entra ID:</p>
-            /login/Login with SAML</a>
+            <a href="/login/">
+  	            <button>Click me</button>
+            </a>
         </body>
         </html>
     """)
