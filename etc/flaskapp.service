@@ -7,7 +7,8 @@ User=azureuser
 Group=www-data
 WorkingDirectory=/home/azureuser/saml-flask-app
 Environment="PATH=/home/azureuser/saml-flask-app/venv/bin"
-ExecStart=/home/azureuser/saml-flask-app/venv/bin/gunicorn --workers 3 --bind unix:/home/azureuser/saml-flask-app/flaskapp.sock app:app
+ExecStart=/home/azureuser/saml-flask-app/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 app:app
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
