@@ -57,7 +57,8 @@ def acs():
             <pre>{{ attributes }}</pre>
         """, name_id=name_id, attributes=attributes)
     else:
-        return f"Errors: {errors}"
+        last_error = auth.get_last_error_reason()
+        return f"Errors: {errors}  {last_error}"
 
 @app.route('/metadata/')
 def metadata():
