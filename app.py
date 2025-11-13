@@ -48,17 +48,27 @@ def acs():
     auth = init_saml_auth(req)
     auth.process_response()
     errors = auth.get_errors()
+
     if not errors:
-        attributes = auth.get_attributes()
+        attributes = auth.get_attributes()  # Dictionary of all claims
         name_id = auth.get_nameid()
-        return render_template_string("""
-            <h1>SAML Response</h1>
-            <p>NameID: {{ name_id }}</p>
-            <pre>{{ attributes }}</pre>
-        """, name_id=name_id, attributes=attributes)
+
+        # Build HTML to display all claims
+        html = """
+        <h1>SAML Response</h1>
+        <p><strong>NameID:</strong> {}</p>
+        <h2>Attributes:</h2>
+        <table border="1" cellpadding="8" style="border-collapse: collapse;">
+            <tr><th>Claim Name</th><th>Value(s)</th></tr>
+        """.format(name_id)
+
+        for key, values in attributes.items():
+            html += "<tr><td>{}</td><td>{}</td></tr>".format(key, ", ".join(values))
+
+        html += "</table><br>/Back to Home</a>"
+        return html
     else:
-        last_error = auth.get_last_error_reason()
-        return f"Errors: {errors}  {last_error}"
+        return f"Errors: {errors}"
 
 @app.route('/metadata/')
 def metadata():
