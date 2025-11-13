@@ -19,9 +19,20 @@ def prepare_flask_request(request):
         'post_data': request.form.copy()
     }
 
+
 @app.route('/')
 def index():
-    return '/login/Login with SAML</a>'
+    # Landing page with a login button
+    return render_template_string("""
+        <html>
+        <head><title>SAML Test App</title></head>
+        <body style="font-family: Arial; text-align: center; margin-top: 50px;">
+            <h1>Welcome to the SAML Test App</h1>
+            <p>Click below to authenticate via Entra ID:</p>
+            /login/Login with SAML</a>
+        </body>
+        </html>
+    """)
 
 @app.route('/login/')
 def login():
