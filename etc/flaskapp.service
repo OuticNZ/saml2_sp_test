@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance for Flask SAML app
+After=network.target
+
+[Service]
+User=azureuser
+Group=www-data
+WorkingDirectory=/home/azureuser/saml-flask-app
+Environment="PATH=/home/azureuser/saml-flask-app/venv/bin"
+ExecStart=/home/azureuser/saml-flask-app/venv/bin/gunicorn --workers 3 --bind unix:/home/azureuser/saml-flask-app/flaskapp.sock app:app
+
+[Install]
+WantedBy=multi-user.target
