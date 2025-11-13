@@ -55,7 +55,7 @@ def acs():
 
         # Build HTML to display all claims
         html = '<h1>SAML Response</h1>'
-        html += '<p><strong>NameID:</strong> "+name_id+"</p>'
+        html += '<p><strong>NameID:</strong> '+name_id+'</p>'
         html += '<h2>Attributes:</h2>'
         html += '<table border="1" cellpadding="8" style="border-collapse: collapse;">'
         html += '<tr><th>Claim Name</th><th>Value(s)</th></tr>'
